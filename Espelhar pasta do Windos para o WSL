@@ -1,0 +1,8 @@
+Criar um “link simbólico” no WSL:
+
+Isso espelha a pasta, parecendo que está dentro de /var/www/softcompdv.
+
+Execute no WSL:
+
+sudo rm -rf /var/www/softcompdv
+sudo ln -s "/mnt/c/ESTUDOS/Formaçao Softcomshop/docker-php/7.3/softcompdv" /var/www/softcompdv
