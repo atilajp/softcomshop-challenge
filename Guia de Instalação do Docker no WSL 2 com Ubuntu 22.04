@@ -1,0 +1,60 @@
+Introdução
+O Docker é uma plataforma que facilita a criação, distribuição e execução de aplicativos em contêineres. 
+Neste guia, você aprenderá a instalar o Docker no WSL 2 (Windows Subsystem for Linux 2) com o Ubuntu 22.04. 
+O WSL 2 permite que você execute um ambiente Linux diretamente no Windows, proporcionando uma integração eficiente entre ambos.
+
+Pré-requisitos
+Antes de iniciar o processo de instalação, certifique-se de atender aos seguintes pré-requisitos:
+
+Um sistema operacional Windows 10 com suporte ao WSL 2.
+WSL 2 ativado.
+Ubuntu 22.04 instalado no WSL 2.
+
+Passo 1: Atualize o Sistema
+Antes de instalar o Docker, é uma boa prática garantir que todos os pacotes do sistema estejam atualizados. 
+Abra o terminal do Ubuntu no WSL 2 e execute os seguintes comandos:
+
+sudo apt update
+sudo apt upgrade -y
+
+Passo 2: Instale as Dependências
+Instale as dependências necessárias para o Docker:
+
+sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+
+Passo 3: Adicione a Chave GPG do Docker
+Adicione a chave GPG oficial do Docker:
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+Passo 4: Adicione o Repositório do Docker
+Adicione o repositório do Docker ao sistema:
+
+echo "deb [signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+Passo 5: Instale o Docker Engine
+Atualize os repositórios e instale o Docker Engine:
+
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io
+
+Passo 6: Adicione o Usuário ao Grupo Docker
+Adicione seu usuário ao grupo Docker para evitar a necessidade de usar sudo em cada comando Docker:
+
+sudo usermod -aG docker $USER
+Faça o logout e login novamente ou reinicie o WSL para que as alterações tenham efeito.
+
+Passo 7: Verifique a Instalação
+Verifique se o Docker foi instalado corretamente:
+
+docker --version
+Isso deve exibir a versão do Docker que foi instalada.
+
+
+Conclusão
+Agora, você tem o Docker instalado no seu ambiente WSL 2 com Ubuntu 22.04. 
+Você está pronto para começar a criar, distribuir e executar contêineres diretamente no seu sistema Windows, aproveitando a integração poderosa entre o WSL 2 e o Docker. 
+Caso queira ver a documentação oficial acesse https://docs.docker.com/desktop/wsl/
+
+
+Fonte:https://medium.com/@habbema/guia-de-instala%C3%A7%C3%A3o-do-docker-no-wsl-2-com-ubuntu-22-04-9ceabe4d79e8
